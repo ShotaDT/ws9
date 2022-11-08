@@ -1,0 +1,38 @@
+My shell script is below:
+#!/bin/bash
+if [ -z "$1" ] ||[ -z "$2" ];
+then
+        echo "argument is invalid"
+else
+        lines=$(wc -l < $2)
+        per=$((lines*$1/100))
+        echo print $per % of the file $2
+        sort -R $2| head -$per
+fi
+
+prompts:
+$ ./randomsample.sh $(($RANDOM % 100)) amazon_reviews_us_Books_v1_02.tsv
+For test:
+* inside of test.txt is:
+1
+2
+3
+4
+...
+17
+$ ./randomsample.sh $(($RANDOM % 100)) test.txt
+>>
+print 12 % of the file test.txt
+13
+12
+4
+17
+7
+3
+1
+10
+9
+11
+16
+6
+
