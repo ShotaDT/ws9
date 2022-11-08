@@ -6,7 +6,7 @@ then
 else
         lines=$(wc -l < $2)
         per=$((lines*$1/100))
-        echo print $per % of the file $2
+        echo print $1 % of the file $2
         sort -R $2| head -$per
 fi
 
